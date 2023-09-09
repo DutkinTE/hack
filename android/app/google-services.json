@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "32184625195",
+    "project_id": "hack-e5614",
+    "storage_bucket": "hack-e5614.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:32184625195:android:0204cbb78b26ae0694626e",
+        "android_client_info": {
+          "package_name": "com.example.hack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "32184625195-46500n6ls806nb0gca94jhnd03h7d7mi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDa3Ns9Ugm5j08_tJJpk96nT0yLFyDiU3o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "32184625195-46500n6ls806nb0gca94jhnd03h7d7mi.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "32184625195-g8ponp0b3t28b0qcdbac8ijvrl36poi0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.hack"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
