@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hack/widgets/home_widget.dart';
 import 'package:hack/widgets/profile_widget.dart';
 
 
@@ -28,9 +29,9 @@ class _ScreenState extends State<Screen> {
   @override
   Widget build(BuildContext context) {
     final List<Widget> widgetOptions = <Widget>[
-      TestWidget(),
-      TestWidget(),
-      ProfileWidget()
+      const HomeWidget(),
+      const TestWidget(),
+      const ProfileWidget()
     ];
     return Scaffold(
       resizeToAvoidBottomInset: true,
@@ -45,7 +46,7 @@ class _ScreenState extends State<Screen> {
           selectedLabelStyle: const TextStyle(fontFamily: 'Inter'),
           selectedFontSize: 10,
           unselectedFontSize: 10,
-          selectedItemColor: const Color.fromRGBO(255, 179, 13, 1),
+          selectedItemColor: Colors.blue,
           unselectedItemColor: const Color.fromRGBO(122, 122, 122, 1),
           elevation: 0,
           backgroundColor: const Color.fromRGBO(249, 249, 249, 0.94),
@@ -83,6 +84,6 @@ class TestWidget extends StatefulWidget {
 class _TestWidgetState extends State<TestWidget> {
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text('Screen'));
+    return const Center(child: Text('Screen'));
   }
 }

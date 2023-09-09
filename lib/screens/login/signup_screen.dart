@@ -15,7 +15,6 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreen extends State<SignUpScreen> {
   bool isHiddenPassword = true;
-  bool accept = false;
   TextEditingController emailTextInputController = TextEditingController();
   TextEditingController passwordTextInputController = TextEditingController();
   TextEditingController passwordTextRepeatInputController =
@@ -53,14 +52,6 @@ class _SignUpScreen extends State<SignUpScreen> {
       return;
     }
 
-    if (accept == false) {
-        SnackBarService.showSnackBar(
-          context,
-          'To continue accept our Privacy Policy and Terms of Use',
-          true,
-        );
-        return;
-      }
 
     try {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -204,28 +195,13 @@ class _SignUpScreen extends State<SignUpScreen> {
                           borderRadius: BorderRadius.circular(12)),
                     ),
                   ),
-                  Row(
-                    children: [
-                      Checkbox(
-                        value: accept,
-                        fillColor: MaterialStateProperty.all<Color>(
-                              const Color.fromRGBO(255, 179, 13, 1)),
-                        onChanged: (bool? value) {
-                          setState(() {
-                            accept = value!;
-                          });
-                        },
-                      ),
-                      const Flexible(child: Text('By continuing you accept our Privacy Policy and Term of Use'))
-                    ],
-                  ),
                   const SizedBox(
                     height: 32,
                   ),
                   ElevatedButton(
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all<Color>(
-                          const Color.fromRGBO(255, 179, 13, 1)),
+                          Colors.blue,),
                       elevation: MaterialStateProperty.all(0),
                       shape: MaterialStateProperty.all(
                         RoundedRectangleBorder(
@@ -264,7 +240,7 @@ class _SignUpScreen extends State<SignUpScreen> {
                         child: const Text(
                           'Sign In.',
                           style: TextStyle(
-                              color: Color.fromRGBO(255, 179, 13, 1),
+                              color: Colors.blue,
                               fontWeight: FontWeight.normal,
                               decoration: TextDecoration.underline,
                               fontSize: 14),
