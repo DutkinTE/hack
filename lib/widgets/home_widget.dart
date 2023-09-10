@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:hack/screens/meet_screen.dart';
 
 class HomeWidget extends StatefulWidget {
   const HomeWidget({super.key});
@@ -10,22 +12,64 @@ class HomeWidget extends StatefulWidget {
 class _HomeWidgetState extends State<HomeWidget> {
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Align(
-          alignment: Alignment.bottomRight,
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: FloatingActionButton(
-              onPressed: () {
-                final navigator = Navigator.of(context);
-                navigator.pushNamedAndRemoveUntil('/create', (Route<dynamic> route) => true);
-              },
-              child: const Icon(Icons.add),
-            ),
-          ),
-        )
-      ],
+    return StreamBuilder<QuerySnapshot>(
+        stream: FirebaseFirestore.instance
+            .collection("public")
+            .snapshots(),
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (!snapshot.hasData) {
+            return const Center(
+              child: Text('Loading...',
+                  style: TextStyle(
+                      fontWeight: FontWeight.w900,
+                      fontSize: 14,
+                      fontFamily: 'Inter')),
+            );
+          }
+          if (snapshot.requireData.docs.isEmpty) {
+            return const Center(
+              child: Text('Empty List',
+                  style: TextStyle(
+                      fontWeight: FontWeight.w900,
+                      fontSize: 14,
+                      fontFamily: 'Inter')),
+            );
+          }
+          if (snapshot.hasError) {
+            return const Center(
+              child: Text('Something went wrong.',
+                  style: TextStyle(
+                      fontWeight: FontWeight.w900,
+                      fontSize: 14,
+                      fontFamily: 'Inter')),
+            );
+          }
+          return ListView.builder(
+              itemCount: snapshot.requireData.docs.length,
+              itemBuilder: (context, index) {
+                return Card(
+      child: InkWell(
+        onTap: () {
+          setState(() {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (_) => MeetScreen(
+                      uid: snapshot.requireData.docs[index]['uid'],
+                        desc: snapshot.requireData.docs[index]['desc'],
+                        time: snapshot.requireData.docs[index]['time'],
+                        place: snapshot.requireData.docs[index]['place'],
+                        number: snapshot.requireData.docs[index]['number'],)));
+          });
+        },
+        child: ListTile(
+          title: Text(snapshot.requireData.docs[index]['desc'], maxLines: 1,),
+          subtitle: Text(snapshot.requireData.docs[index]['place'], maxLines: 1,),
+          trailing: Text(snapshot.requireData.docs[index]['time']),
+        ),
+      ),
     );
+              });
+        });
   }
 }

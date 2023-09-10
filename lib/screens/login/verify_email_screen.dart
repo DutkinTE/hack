@@ -97,7 +97,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                   ElevatedButton(
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all<Color>(
-                          const Color.fromRGBO(255, 179, 13, 1)),
+                          Colors.blue),
                       elevation: MaterialStateProperty.all(0),
                       shape: MaterialStateProperty.all(
                         RoundedRectangleBorder(

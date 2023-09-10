@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hack/widgets/create_screen.dart';
 import 'package:hack/widgets/home_widget.dart';
 import 'package:hack/widgets/profile_widget.dart';
 
@@ -30,8 +31,8 @@ class _ScreenState extends State<Screen> {
   Widget build(BuildContext context) {
     final List<Widget> widgetOptions = <Widget>[
       const HomeWidget(),
-      const TestWidget(),
-      const ProfileWidget()
+      const CreateWidget(),
+      const ProfileWidget(),
     ];
     return Scaffold(
       resizeToAvoidBottomInset: true,
@@ -56,8 +57,8 @@ class _ScreenState extends State<Screen> {
               label: 'Home',
             ),
             BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.globe),
-              label: 'Explore',
+              icon: Icon(CupertinoIcons.pen),
+              label: 'My meet',
             ),
             BottomNavigationBarItem(
               icon: Icon(CupertinoIcons.person_crop_circle_fill),

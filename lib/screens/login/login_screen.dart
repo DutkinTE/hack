@@ -70,156 +70,165 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      resizeToAvoidBottomInset: false,
-      body: Padding(
-        padding: const EdgeInsets.all(30.0),
-        child: Form(
-          key: formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Column(
+    return Stack(
+      children: [
+        Image.asset('lib/assets/images/iPhone 14 Pro Max - 14.png', width: double.infinity,),
+        Scaffold(
+          backgroundColor: Colors.transparent,
+          resizeToAvoidBottomInset: false,
+          body: Padding(
+            padding: const EdgeInsets.only(bottom: 50.0, right: 30, left: 30),
+            child: Form(
+              key: formKey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(
-                    height: 80,
-                  ),
-                  const Center(
-                      child: Text(
-                    'Sing In',
-                    style: TextStyle(
-                        fontWeight: FontWeight.w900,
-                        fontSize: 30,
-                        fontFamily: 'Inter'),
-                    textAlign: TextAlign.center,
-                  )),
-                  const SizedBox(
-                    height: 32,
-                  ),
-                  const Text(
-                    'Email Address',
-                    textAlign: TextAlign.start,
-                    style: TextStyle(
-                        fontWeight: FontWeight.w900, fontFamily: 'Inter'),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  TextFormField(
-                    keyboardType: TextInputType.emailAddress,
-                    autocorrect: false,
-                    controller: emailTextInputController,
-                    validator: (email) =>
-                        email != null && !EmailValidator.validate(email)
-                            ? 'Enter correct Email'
-                            : null,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12)),
-                    ),
-                  ),
-                  const SizedBox(height: 25),
-                  const Text(
-                    'Password',
-                    textAlign: TextAlign.start,
-                    style: TextStyle(
-                        fontWeight: FontWeight.w900, fontFamily: 'Inter'),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  TextFormField(
-                    autocorrect: false,
-                    controller: passwordTextInputController,
-                    obscureText: isHiddenPassword,
-                    validator: (value) => value != null && value.length < 6
-                        ? 'Minimum 6 characters'
-                        : null,
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12)),
-                    ),
-                  ),
-                  const SizedBox(height: 30),
-                  ElevatedButton(
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(
-                          Colors.blue,),
-                      elevation: MaterialStateProperty.all(0),
-                      shape: MaterialStateProperty.all(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(100),
-                        ),
-                      ),
-                    ),
-                    onPressed: login,
-                    child: const SizedBox(
-                        height: 56,
-                        child: Center(
-                            child: Text(
-                          'SING IN',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Inter'),
-                        ))),
-                  ),
-                ],
-              ),
-              Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
-                        'Don’t have an account? ',
-                        style: TextStyle(
-                            color: Color.fromRGBO(129, 139, 160, 1),
-                            fontWeight: FontWeight.normal,
-                            fontSize: 14,
-                            fontFamily: 'Inter'),
+                      const SizedBox(
+                        height: 130,
                       ),
-                      GestureDetector(
-                        onTap: () => Navigator.of(context).pushNamed('/signup'),
-                        child: const Text(
-                          'Sign Up.',
-                          style: TextStyle(
-                              color: Colors.blue,
-                              fontWeight: FontWeight.normal,
-                              decoration: TextDecoration.underline,
-                              fontSize: 14,
-                              fontFamily: 'Inter'),
+                      const Center(
+                          child: Text(
+                        'Meeting N',
+                        style: TextStyle(
+                          color: Colors.white,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 52),
+                        textAlign: TextAlign.center,
+                      )),
+                      const SizedBox(
+                        height: 100,
+                      ),
+                      const Text(
+                        'Email Address',
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                            fontWeight: FontWeight.w900, color: Colors.white),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      TextFormField(
+                        keyboardType: TextInputType.emailAddress,
+                        style: const TextStyle(color: Colors.white),
+                        autocorrect: false,
+                        controller: emailTextInputController,
+                        validator: (email) =>
+                            email != null && !EmailValidator.validate(email)
+                                ? 'Enter correct Email'
+                                : null,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderSide: const BorderSide(color: Colors.white,),
+                              borderRadius: BorderRadius.circular(30)),
                         ),
+                      ),
+                      const SizedBox(height: 25),
+                      const Text(
+                        'Password',
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                            fontWeight: FontWeight.w900, color: Colors.white),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      TextFormField(
+                        autocorrect: false,
+                        style: const TextStyle(color: Colors.white),
+                        controller: passwordTextInputController,
+                        obscureText: isHiddenPassword,
+                        validator: (value) => value != null && value.length < 6
+                            ? 'Minimum 6 characters'
+                            : null,
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderSide: const BorderSide(color: Colors.white,),
+                              borderRadius: BorderRadius.circular(30)),
+                        ),
+                      ),
+                      const SizedBox(height: 30),
+                      ElevatedButton(
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              Colors.blue,),
+                          elevation: MaterialStateProperty.all(0),
+                          shape: MaterialStateProperty.all(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(100),
+                            ),
+                          ),
+                        ),
+                        onPressed: login,
+                        child: const SizedBox(
+                            height: 56,
+                            child: Center(
+                                child: Text(
+                              'SING IN',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Inter'),
+                            ))),
                       ),
                     ],
                   ),
-                  const SizedBox(height: 5,),
-                  Center(
-                    child: GestureDetector(
-                      onTap: () =>
-                          Navigator.of(context).pushNamed('/reset_password'),
-                      child: const Text(
-                        'Reset the password',
-                        style: TextStyle(
-                            color: Color.fromRGBO(129, 139, 160, 1),
-                            decoration: TextDecoration.underline,
-                            fontWeight: FontWeight.normal,
-                            fontSize: 14,
-                            fontFamily: 'Inter'),
+                  Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                            'Don’t have an account? ',
+                            style: TextStyle(
+                                color: Color.fromRGBO(129, 139, 160, 1),
+                                fontWeight: FontWeight.normal,
+                                fontSize: 14,
+                                fontFamily: 'Inter'),
+                          ),
+                          GestureDetector(
+                            onTap: () => Navigator.of(context).pushNamed('/signup'),
+                            child: const Text(
+                              'Sign Up.',
+                              style: TextStyle(
+                                  color: Colors.blue,
+                                  fontWeight: FontWeight.normal,
+                                  decoration: TextDecoration.underline,
+                                  fontSize: 14,
+                                  fontFamily: 'Inter'),
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                  ),
+                      const SizedBox(height: 5,),
+                      Center(
+                        child: GestureDetector(
+                          onTap: () =>
+                              Navigator.of(context).pushNamed('/reset_password'),
+                          child: const Text(
+                            'Reset the password',
+                            style: TextStyle(
+                                color: Color.fromRGBO(129, 139, 160, 1),
+                                decoration: TextDecoration.underline,
+                                fontWeight: FontWeight.normal,
+                                fontSize: 14,
+                                fontFamily: 'Inter'),
+                          ),
+                        ),
+                      ),
+                    ],
+                  )
                 ],
-              )
-            ],
+              ),
+            ),
           ),
         ),
-      ),
+      ],
     );
   }
 }

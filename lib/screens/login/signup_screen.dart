@@ -1,7 +1,5 @@
 // ignore_for_file: use_build_context_synchronously
-
 import 'package:hack/scripts/snack_bar.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +13,7 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreen extends State<SignUpScreen> {
   bool isHiddenPassword = true;
+  TextEditingController nameTextInputController = TextEditingController();
   TextEditingController emailTextInputController = TextEditingController();
   TextEditingController passwordTextInputController = TextEditingController();
   TextEditingController passwordTextRepeatInputController =
@@ -23,6 +22,7 @@ class _SignUpScreen extends State<SignUpScreen> {
 
   @override
   void dispose() {
+    nameTextInputController.dispose();
     emailTextInputController.dispose();
     passwordTextInputController.dispose();
     passwordTextRepeatInputController.dispose();
@@ -80,40 +80,27 @@ class _SignUpScreen extends State<SignUpScreen> {
       }
     }
 
-    PostDetailsToFirestore();
-
     navigator.pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
   }
 
-  // ignore: non_constant_identifier_names
-  PostDetailsToFirestore() async {
-    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-    User? user = FirebaseAuth.instance.currentUser;
-
-    await firebaseFirestore
-        .collection('users')
-        .doc(user?.uid)
-        .set({'public': false});
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
         foregroundColor: Colors.black,
         backgroundColor: Colors.white,
       ),
-      resizeToAvoidBottomInset: false,
-      body: Padding(
-        padding: const EdgeInsets.all(30),
-        child: Form(
-          key: formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
+      body: Form(
+        key: formKey,
+        child: ListView(
+          children: [
+            Padding(
+        padding: const EdgeInsets.only(right: 30, left: 30),
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Center(
@@ -127,6 +114,30 @@ class _SignUpScreen extends State<SignUpScreen> {
                   const SizedBox(
                     height: 32,
                   ),
+                  const Text(
+                    'Name',
+                    textAlign: TextAlign.start,
+                    style: TextStyle(
+                        fontWeight: FontWeight.w900, fontFamily: 'Inter'),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  TextFormField(
+                    autocorrect: false,
+                    controller: nameTextInputController,
+                    keyboardType: TextInputType.name,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    validator: (value) => value == ''
+                        ? 'Enter name'
+                        : null,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12)),
+                    ),
+                  ),
+                  const SizedBox(height: 15),
+                  
                   const Text(
                     'Email Address',
                     textAlign: TextAlign.start,
@@ -149,7 +160,7 @@ class _SignUpScreen extends State<SignUpScreen> {
                           borderRadius: BorderRadius.circular(12)),
                     ),
                   ),
-                  const SizedBox(height: 25),
+                  const SizedBox(height: 15),
                   const Text(
                     'Password',
                     textAlign: TextAlign.start,
@@ -172,7 +183,7 @@ class _SignUpScreen extends State<SignUpScreen> {
                           borderRadius: BorderRadius.circular(12)),
                     ),
                   ),
-                  const SizedBox(height: 25),
+                  const SizedBox(height: 15),
                   const Text(
                     'Password confirmation',
                     textAlign: TextAlign.start,
@@ -221,37 +232,35 @@ class _SignUpScreen extends State<SignUpScreen> {
                               fontWeight: FontWeight.bold),
                         ))),
                   ),
-                ],
-              ),
-              Column(
+                  const SizedBox(height: 100,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text(
-                        'Already have an account? ',
-                        style: TextStyle(
-                            color: Color.fromRGBO(129, 139, 160, 1),
-                            fontWeight: FontWeight.normal,
-                            fontSize: 14),
-                      ),
-                      GestureDetector(
-                        onTap: () => Navigator.of(context).pop(),
-                        child: const Text(
-                          'Sign In.',
-                          style: TextStyle(
-                              color: Colors.blue,
-                              fontWeight: FontWeight.normal,
-                              decoration: TextDecoration.underline,
-                              fontSize: 14),
-                        ),
-                      ),
-                    ],
+                  const Text(
+                    'Already have an account? ',
+                    style: TextStyle(
+                        color: Color.fromRGBO(129, 139, 160, 1),
+                        fontWeight: FontWeight.normal,
+                        fontSize: 14),
+                  ),
+                  GestureDetector(
+                    onTap: () => Navigator.of(context).pop(),
+                    child: const Text(
+                      'Sign In.',
+                      style: TextStyle(
+                          color: Colors.blue,
+                          fontWeight: FontWeight.normal,
+                          decoration: TextDecoration.underline,
+                          fontSize: 14),
+                    ),
                   ),
                 ],
               )
-            ],
-          ),
+                ],
+              ),
+            ),
+            
+          ],
         ),
       ),
     );
