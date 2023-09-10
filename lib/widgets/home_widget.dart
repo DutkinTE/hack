@@ -21,6 +21,7 @@ class _HomeWidgetState extends State<HomeWidget> {
             return const Center(
               child: Text('Loading...',
                   style: TextStyle(
+                    color: Colors.white,
                       fontWeight: FontWeight.w900,
                       fontSize: 14,
                       fontFamily: 'Inter')),
@@ -30,6 +31,7 @@ class _HomeWidgetState extends State<HomeWidget> {
             return const Center(
               child: Text('Empty List',
                   style: TextStyle(
+                    color: Colors.white,
                       fontWeight: FontWeight.w900,
                       fontSize: 14,
                       fontFamily: 'Inter')),
@@ -39,6 +41,7 @@ class _HomeWidgetState extends State<HomeWidget> {
             return const Center(
               child: Text('Something went wrong.',
                   style: TextStyle(
+                    color: Colors.white,
                       fontWeight: FontWeight.w900,
                       fontSize: 14,
                       fontFamily: 'Inter')),
@@ -63,6 +66,8 @@ class _HomeWidgetState extends State<HomeWidget> {
           });
         },
         child: ListTile(
+          tileColor: Colors.blue[800],
+          textColor: Colors.white,
           title: Text(snapshot.requireData.docs[index]['desc'], maxLines: 1,),
           subtitle: Text(snapshot.requireData.docs[index]['place'], maxLines: 1,),
           trailing: Text(snapshot.requireData.docs[index]['time']),

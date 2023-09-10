@@ -34,42 +34,47 @@ class _ScreenState extends State<Screen> {
       const CreateWidget(),
       const ProfileWidget(),
     ];
-    return Scaffold(
-      resizeToAvoidBottomInset: true,
-      backgroundColor: Colors.white,
-      bottomNavigationBar: Container(
-        decoration: const BoxDecoration(
-            border: Border(
-                top: BorderSide(
-                    width: 1, color: Color.fromRGBO(60, 60, 67, 0.36)))),
-        child: BottomNavigationBar(
-          unselectedLabelStyle: const TextStyle(fontFamily: 'Inter'),
-          selectedLabelStyle: const TextStyle(fontFamily: 'Inter'),
-          selectedFontSize: 10,
-          unselectedFontSize: 10,
-          selectedItemColor: Colors.blue,
-          unselectedItemColor: const Color.fromRGBO(122, 122, 122, 1),
-          elevation: 0,
-          backgroundColor: const Color.fromRGBO(249, 249, 249, 0.94),
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.home),
-              label: 'Home',
+    return Stack(
+      children: [
+        Image.asset('lib/assets/images/iPhone 14 Pro Max - 14.png', width: double.infinity,),
+        Scaffold(
+          resizeToAvoidBottomInset: true,
+          backgroundColor: Colors.transparent,
+          bottomNavigationBar: Container(
+            decoration: const BoxDecoration(
+                border: Border(
+                    top: BorderSide(
+                        width: 1, color: Color.fromRGBO(60, 60, 67, 0.36)))),
+            child: BottomNavigationBar(
+              unselectedLabelStyle: const TextStyle(color: Colors.white),
+              selectedLabelStyle: const TextStyle(color: Colors.white),
+              selectedFontSize: 10,
+              unselectedFontSize: 10,
+              selectedItemColor: Colors.white,
+              unselectedItemColor: Colors.white,
+              elevation: 0,
+              backgroundColor: Colors.blue,
+              items: const <BottomNavigationBarItem>[
+                BottomNavigationBarItem(
+                  icon: Icon(CupertinoIcons.home, color: Colors.white,),
+                  label: 'Home',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(CupertinoIcons.pen, color: Colors.white),
+                  label: 'My meet',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(CupertinoIcons.person_crop_circle_fill, color: Colors.white),
+                  label: 'Profile',
+                ),
+              ],
+              currentIndex: _selectedIndex,
+              onTap: _onItemTapped,
             ),
-            BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.pen),
-              label: 'My meet',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.person_crop_circle_fill),
-              label: 'Profile',
-            ),
-          ],
-          currentIndex: _selectedIndex,
-          onTap: _onItemTapped,
+          ),
+          body: widgetOptions[_selectedIndex],
         ),
-      ),
-      body: widgetOptions[_selectedIndex],
+      ],
     );
   }
 }

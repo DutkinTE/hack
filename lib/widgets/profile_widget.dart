@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +22,6 @@ class _ProfileWidgetState extends State<ProfileWidget> {
   Future<void> delete() async {
     final navigator = Navigator.of(context);
     setState(() {
-      FirebaseFirestore.instance.collection('users').doc(user!.uid).delete();
       FirebaseAuth.instance.currentUser!.delete();
       navigator.pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
     });

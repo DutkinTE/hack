@@ -72,7 +72,10 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Image.asset('lib/assets/images/iPhone 14 Pro Max - 14.png', width: double.infinity,),
+        Image.asset(
+          'lib/assets/images/iPhone 14 Pro Max - 14.png',
+          width: double.infinity,
+        ),
         Scaffold(
           backgroundColor: Colors.transparent,
           resizeToAvoidBottomInset: false,
@@ -94,7 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           child: Text(
                         'Meeting N',
                         style: TextStyle(
-                          color: Colors.white,
+                            color: Colors.white,
                             fontWeight: FontWeight.w700,
                             fontSize: 52),
                         textAlign: TextAlign.center,
@@ -121,8 +124,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ? 'Enter correct Email'
                                 : null,
                         decoration: InputDecoration(
+                          enabledBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(30)),
                           border: OutlineInputBorder(
-                            borderSide: const BorderSide(color: Colors.white,),
+                              borderSide: const BorderSide(
+                                color: Colors.white,
+                              ),
                               borderRadius: BorderRadius.circular(30)),
                         ),
                       ),
@@ -144,10 +152,11 @@ class _LoginScreenState extends State<LoginScreen> {
                         validator: (value) => value != null && value.length < 6
                             ? 'Minimum 6 characters'
                             : null,
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
                         decoration: InputDecoration(
+                          enabledBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(30)),
                           border: OutlineInputBorder(
-                            borderSide: const BorderSide(color: Colors.white,),
                               borderRadius: BorderRadius.circular(30)),
                         ),
                       ),
@@ -155,7 +164,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       ElevatedButton(
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
-                              Colors.blue,),
+                            Colors.blue,
+                          ),
                           elevation: MaterialStateProperty.all(0),
                           shape: MaterialStateProperty.all(
                             RoundedRectangleBorder(
@@ -192,7 +202,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                 fontFamily: 'Inter'),
                           ),
                           GestureDetector(
-                            onTap: () => Navigator.of(context).pushNamed('/signup'),
+                            onTap: () =>
+                                Navigator.of(context).pushNamed('/signup'),
                             child: const Text(
                               'Sign Up.',
                               style: TextStyle(
@@ -205,11 +216,13 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ],
                       ),
-                      const SizedBox(height: 5,),
+                      const SizedBox(
+                        height: 5,
+                      ),
                       Center(
                         child: GestureDetector(
-                          onTap: () =>
-                              Navigator.of(context).pushNamed('/reset_password'),
+                          onTap: () => Navigator.of(context)
+                              .pushNamed('/reset_password'),
                           child: const Text(
                             'Reset the password',
                             style: TextStyle(

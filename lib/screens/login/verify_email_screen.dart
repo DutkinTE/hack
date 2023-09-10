@@ -73,75 +73,83 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
       : Scaffold(
           backgroundColor: Colors.white,
           resizeToAvoidBottomInset: false,
-          body: SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.all(30),
-              child: Column(
+          body: Stack(
+            children: [
+              Image.asset(
+          'lib/assets/images/iPhone 14 Pro Max - 14.png',
+          width: double.infinity,
+        ),
+              SafeArea(
+                child: Padding(
+                  padding: const EdgeInsets.all(30),
+                  child: Column(
 
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                    const SizedBox(height: 220,),
-                    const Center(
-                    child: Text(
-                      'We have sent you a confirmation email to your email',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 30,
-                          fontFamily: 'Inter'),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  const SizedBox(height: 50),
-                  ElevatedButton(
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(
-                          Colors.blue),
-                      elevation: MaterialStateProperty.all(0),
-                      shape: MaterialStateProperty.all(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(100),
-                        ),
-                      ),
-                    ),
-                    onPressed: canResendEmail ? sendVerificationEmail : null,
-                    child: const SizedBox(
-                    height: 56,
-                    child: Center(
+                      Column(
+                        children: [
+                        const SizedBox(height: 220,),
+                        const Center(
                         child: Text(
-                      'SEND AGAIN',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Inter'
-                      ),
-                    ))),
-                  ),
-                  ],),
-                  
-                  Column(
-                    children: [
-                      GestureDetector(
-                        onTap: () =>
-                            Navigator.of(context).pushNamed('/login'),
-                        child: const Text(
-                          'Сhange email',
+                          'We have sent you a confirmation email to your email',
                           style: TextStyle(
-                              color: Color.fromRGBO(129, 139, 160, 1),
-                              decoration: TextDecoration.underline,
-                              fontWeight: FontWeight.normal,
-                              fontSize: 14,
-                              fontFamily: 'Inter'),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 30,
+                              color: Colors.white),
+                          textAlign: TextAlign.center,
                         ),
                       ),
-                      const SizedBox(height: 50,)
+                      const SizedBox(height: 50),
+                      ElevatedButton(
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              Colors.blue),
+                          elevation: MaterialStateProperty.all(0),
+                          shape: MaterialStateProperty.all(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(100),
+                            ),
+                          ),
+                        ),
+                        onPressed: canResendEmail ? sendVerificationEmail : null,
+                        child: const SizedBox(
+                        height: 56,
+                        child: Center(
+                            child: Text(
+                          'SEND AGAIN',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Inter'
+                          ),
+                        ))),
+                      ),
+                      ],),
+                      
+                      Column(
+                        children: [
+                          GestureDetector(
+                            onTap: () =>
+                                Navigator.of(context).pushNamed('/login'),
+                            child: const Text(
+                              'Сhange email',
+                              style: TextStyle(
+                                  color: Color.fromRGBO(129, 139, 160, 1),
+                                  decoration: TextDecoration.underline,
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 14,
+                                  fontFamily: 'Inter'),
+                            ),
+                          ),
+                          const SizedBox(height: 50,)
+                        ],
+                      ),
                     ],
                   ),
-                ],
+                ),
               ),
-            ),
+            ],
           ),
         );
 }

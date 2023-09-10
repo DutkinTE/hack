@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:hack/scripts/firebase_api.dart';
 import 'package:hack/widgets/create_screen.dart';
 import 'package:hack/screens/home_screen.dart';
 import 'package:hack/screens/login/firebase_stream.dart';
@@ -15,6 +16,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await FirebaseApi().initNotification();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown])
     .then((_) {
       runApp(const MyApp());
