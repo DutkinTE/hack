@@ -13,7 +13,6 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreen extends State<SignUpScreen> {
   bool isHiddenPassword = true;
-  TextEditingController nameTextInputController = TextEditingController();
   TextEditingController emailTextInputController = TextEditingController();
   TextEditingController passwordTextInputController = TextEditingController();
   TextEditingController passwordTextRepeatInputController =
@@ -22,7 +21,6 @@ class _SignUpScreen extends State<SignUpScreen> {
 
   @override
   void dispose() {
-    nameTextInputController.dispose();
     emailTextInputController.dispose();
     passwordTextInputController.dispose();
     passwordTextRepeatInputController.dispose();
@@ -103,45 +101,10 @@ class _SignUpScreen extends State<SignUpScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(
-                        height: 10,
-                      ),
-                      const Center(
-                          child: Text(
-                        'Meeting N',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 52),
-                      )),
                       const SizedBox(
-                        height: 80,
+                        height: 190,
                       ),
-                      const Text(
-                        'Name',
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                            fontWeight: FontWeight.w900, color: Colors.white),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      TextFormField(
-                        style: TextStyle(color: Colors.white),
-                        autocorrect: false,
-                        controller: nameTextInputController,
-                        keyboardType: TextInputType.name,
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        validator: (value) => value == '' ? 'Enter name' : null,
-                        decoration: InputDecoration(
-                          enabledBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(color: Colors.white),
-                              borderRadius: BorderRadius.circular(30)),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30)),
-                        ),
-                      ),
-                      const SizedBox(height: 15),
+                      
                       const Text(
                         'Email Address',
                         textAlign: TextAlign.start,
@@ -152,7 +115,7 @@ class _SignUpScreen extends State<SignUpScreen> {
                         height: 10,
                       ),
                       TextFormField(
-                        style: TextStyle(color: Colors.white),
+                        style: const TextStyle(color: Colors.white),
                         keyboardType: TextInputType.emailAddress,
                         autocorrect: false,
                         controller: emailTextInputController,
@@ -163,9 +126,9 @@ class _SignUpScreen extends State<SignUpScreen> {
                         decoration: InputDecoration(
                           enabledBorder: OutlineInputBorder(
                               borderSide: const BorderSide(color: Colors.white),
-                              borderRadius: BorderRadius.circular(30)),
+                              borderRadius: BorderRadius.circular(15)),
                           border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30)),
+                              borderRadius: BorderRadius.circular(15)),
                         ),
                       ),
                       const SizedBox(height: 15),
@@ -179,7 +142,7 @@ class _SignUpScreen extends State<SignUpScreen> {
                         height: 10,
                       ),
                       TextFormField(
-                        style: TextStyle(color: Colors.white),
+                        style: const TextStyle(color: Colors.white),
                         autocorrect: false,
                         controller: passwordTextInputController,
                         obscureText: isHiddenPassword,
@@ -190,9 +153,9 @@ class _SignUpScreen extends State<SignUpScreen> {
                         decoration: InputDecoration(
                           enabledBorder: OutlineInputBorder(
                               borderSide: const BorderSide(color: Colors.white),
-                              borderRadius: BorderRadius.circular(30)),
+                              borderRadius: BorderRadius.circular(15)),
                           border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30)),
+                              borderRadius: BorderRadius.circular(15)),
                         ),
                       ),
                       const SizedBox(height: 15),
@@ -206,7 +169,7 @@ class _SignUpScreen extends State<SignUpScreen> {
                         height: 10,
                       ),
                       TextFormField(
-                        style: TextStyle(color: Colors.white),
+                        style: const TextStyle(color: Colors.white),
                         autocorrect: false,
                         controller: passwordTextRepeatInputController,
                         obscureText: isHiddenPassword,
@@ -217,9 +180,9 @@ class _SignUpScreen extends State<SignUpScreen> {
                         decoration: InputDecoration(
                           enabledBorder: OutlineInputBorder(
                               borderSide: const BorderSide(color: Colors.white),
-                              borderRadius: BorderRadius.circular(30)),
+                              borderRadius: BorderRadius.circular(15)),
                           border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30)),
+                              borderRadius: BorderRadius.circular(15)),
                         ),
                       ),
                       const SizedBox(
@@ -250,7 +213,7 @@ class _SignUpScreen extends State<SignUpScreen> {
                             ))),
                       ),
                       const SizedBox(
-                        height: 100,
+                        height: 50,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -263,7 +226,7 @@ class _SignUpScreen extends State<SignUpScreen> {
                                 fontSize: 14),
                           ),
                           GestureDetector(
-                            onTap: () => Navigator.of(context).pop(),
+                            onTap: () => Navigator.of(context).pushNamed('/login'),
                             child: const Text(
                               'Sign In.',
                               style: TextStyle(

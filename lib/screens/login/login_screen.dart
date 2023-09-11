@@ -87,23 +87,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  const SizedBox(height: 1,),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const SizedBox(
                         height: 130,
-                      ),
-                      const Center(
-                          child: Text(
-                        'Meeting N',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 52),
-                        textAlign: TextAlign.center,
-                      )),
-                      const SizedBox(
-                        height: 100,
                       ),
                       const Text(
                         'Email Address',
@@ -126,12 +115,12 @@ class _LoginScreenState extends State<LoginScreen> {
                         decoration: InputDecoration(
                           enabledBorder: OutlineInputBorder(
                               borderSide: const BorderSide(color: Colors.white),
-                              borderRadius: BorderRadius.circular(30)),
+                              borderRadius: BorderRadius.circular(15)),
                           border: OutlineInputBorder(
                               borderSide: const BorderSide(
                                 color: Colors.white,
                               ),
-                              borderRadius: BorderRadius.circular(30)),
+                              borderRadius: BorderRadius.circular(15)),
                         ),
                       ),
                       const SizedBox(height: 25),
@@ -155,9 +144,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         decoration: InputDecoration(
                           enabledBorder: OutlineInputBorder(
                               borderSide: const BorderSide(color: Colors.white),
-                              borderRadius: BorderRadius.circular(30)),
+                              borderRadius: BorderRadius.circular(15)),
                           border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30)),
+                              borderRadius: BorderRadius.circular(15)),
                         ),
                       ),
                       const SizedBox(height: 30),

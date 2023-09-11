@@ -90,14 +90,6 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Center(
-                      child: Text(
-                    'Reset the password',
-                    style: TextStyle(
-                        fontWeight: FontWeight.w900,
-                        fontSize: 30,
-                        color: Colors.white),
-                  )),
                   const SizedBox(height: 200,),
                   const Text(
                     'Email Address',
@@ -110,7 +102,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                     height: 10,
                   ),
                   TextFormField(
-                    style: TextStyle(color: Colors.white),
+                    style: const TextStyle(color: Colors.white),
                     keyboardType: TextInputType.emailAddress,
                     autocorrect: false,
                     controller: emailTextInputController,
@@ -121,9 +113,9 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
                               borderSide: const BorderSide(color: Colors.white),
-                              borderRadius: BorderRadius.circular(30)),
+                              borderRadius: BorderRadius.circular(15)),
                       border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30)),
+                          borderRadius: BorderRadius.circular(15)),
                     ),
                   ),
                   const SizedBox(height: 30),
