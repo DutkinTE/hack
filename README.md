@@ -14,3 +14,4 @@
 - XCode - для разработки под IOS
 # Meeting_N
 # Meeting_N
+# hack
