@@ -71,7 +71,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
   Widget build(BuildContext context) => isEmailVerified
       ? const HomeScreen()
       : Scaffold(
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.transparent,
           resizeToAvoidBottomInset: false,
           body: Stack(
             children: [
