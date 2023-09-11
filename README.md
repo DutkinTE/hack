@@ -12,6 +12,3 @@
 - Visual Studio Code - среда разработки
 - Android Studio - для разработки под андроид
 - XCode - для разработки под IOS
-# Meeting_N
-# Meeting_N
-# hack
