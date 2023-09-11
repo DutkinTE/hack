@@ -1,16 +1,15 @@
-# hack
+# Meeting N
 
-A new Flutter project.
+## Бриф на разработку  
 
-## Getting Started
+Кроссплатформенное мобильное приложение для назначения быстрых встреч для различных целей
 
-This project is a starting point for a Flutter application.
+## Стек технологий
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Flutter - фреймворк
+- Dart - язык программирования
+- Firebase - база данных, серверная часть
+- Visual Studio Code - среда разработки
+- Android Studio - для разработки под андроид
+- XCode - для разработки под IOS
+# Meeting_N
